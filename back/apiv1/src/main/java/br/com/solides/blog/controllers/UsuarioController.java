@@ -1,22 +1,22 @@
 package br.com.solides.blog.controllers;
 
+import br.com.solides.blog.dto.UsuarioInsertRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @CrossOrigin
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/usuario")
 public class UsuarioController {
 
 
-    @GetMapping("/test")
-    public ResponseEntity<String> test() {
+    @PostMapping()
+    public ResponseEntity<String> insertUsuario(UsuarioInsertRequest dto) {
+
+
 
         return ResponseEntity.ok("ok");
     }
