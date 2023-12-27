@@ -3,9 +3,15 @@ import { isLoggedIn } from '../util/userstatus';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { User } from '../model/User';
+import { BlogUser, User } from '../model/User';
 
 import { ApiResponse, emptyResponse } from '../model/ApiResponse';
+import { Constants } from '../strings';
+
+export const getCurrentToken = () => {
+  const user = JSON.parse(sessionStorage.getItem(Constants.LOGIN_DATA) as string);
+  return user.token;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +22,6 @@ export class AuthService {
   }
 
   checkLoginStatus() {
-    console.log('checando status')
     if (!isLoggedIn()) {
       this.router.navigate(['login']);
     }
@@ -41,11 +46,35 @@ export class AuthService {
           senha,
         }).toPromise();
 
-      console.log(res);  
+      if(res?.success) {
+        this.saveSessionDataToken(res.data as User);
+        this.router.navigate(['home']);
+      }  
+      
       return res || emptyResponse;
     } catch (error) {
       return emptyResponse;
     }
   }
 
+  saveSessionDataToken(logindata: User) {
+    sessionStorage.setItem(Constants.LOGIN_DATA, JSON.stringify(logindata));
+  }
+
+
+  getCurrentUserName() {
+    const user = JSON.parse(sessionStorage.getItem(Constants.LOGIN_DATA) as string);
+    return user?.nome;
+  }
+  
+  getCurrentUser(): BlogUser {
+    const user = JSON.parse(sessionStorage.getItem(Constants.LOGIN_DATA) as string);
+    return user;
+  }
+
+  encerrarSessao() {
+    sessionStorage.clear();
+    this.router.navigate(['login']);
+  }
+  
 }

@@ -4,7 +4,8 @@ import { PanelModule } from 'primeng/panel';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ButtonModule } from 'primeng/button';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -13,6 +14,8 @@ import { TopbarComponent } from './home/topbar/topbar.component';
 import { UserinfoComponent } from './home/userinfo/userinfo.component';
 import { RegisterComponent } from './register/register.component';
 import { PostsComponent } from './posts/posts.component';
+import { BloglistComponent } from './home/bloglist/bloglist.component';
+import { AuthInterceptor } from './util/interceptors/authInterceptor';
 
 
 @NgModule({
@@ -23,17 +26,25 @@ import { PostsComponent } from './posts/posts.component';
     TopbarComponent,
     UserinfoComponent,
     RegisterComponent,
-    PostsComponent
+    PostsComponent,
+    BloglistComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    ButtonModule,
     HttpClientModule,
     PanelModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

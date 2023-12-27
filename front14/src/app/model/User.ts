@@ -11,3 +11,8 @@ export class UserRegisterRequest {
   senha: string = '';
   email: string = '';
 }
+
+export interface BlogUser {
+  id: number;
+  nome: string;
+}

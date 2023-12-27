@@ -21,8 +21,6 @@ public class UsuarioController extends BaseController {
     @Autowired
     private UsuarioServiceImpl usuarioService;
 
-
-
     @GetMapping("/info")
     public ResponseEntity<ApiResponse<Object>> getUsuarioInfo() {
 
@@ -35,15 +33,16 @@ public class UsuarioController extends BaseController {
         });
     }
 
-    @GetMapping("/hello")
-    public ResponseEntity<ApiResponse<Object>> getHello() {
+    @GetMapping("list")
+    public ResponseEntity<ApiResponse<Object>> getListaUsuarios() {
 
         return createResponse(new Supplier() {
             @Override
             public Object get() {
-
-                return "Hello world";
+                return usuarioService.getListaUsuarios();
             }
         });
     }
+
+
 }

@@ -1,4 +1,4 @@
 export enum Constants {
     USER = 'USER',
-    TOKEN = 'TOKEN'
+    LOGIN_DATA = 'LOGIN_DATA'
 }

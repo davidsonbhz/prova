@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { ApiResponse, emptyResponse } from '../model/ApiResponse';
-import { User, UserRegisterRequest } from '../model/User';
+import { BlogUser, User, UserRegisterRequest } from '../model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +25,15 @@ export class UserService {
     }
   }
 
+  async getUsersList(): Promise<BlogUser[]> {
+    try {
+      const res = await this.http
+        .get<ApiResponse<BlogUser[]>>(`${environment.apiUrl}/api/private/usuarios/list`).toPromise();
+
+      return res?.data || [];
+    } catch (error) {
+      return [];
+    }
+  }
 
 }

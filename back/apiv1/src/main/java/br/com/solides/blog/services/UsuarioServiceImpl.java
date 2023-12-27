@@ -4,6 +4,7 @@ package br.com.solides.blog.services;
 import br.com.solides.blog.config.JwtUtil;
 import br.com.solides.blog.config.LoggedUser;
 import br.com.solides.blog.dto.UsuarioAuthResponse;
+import br.com.solides.blog.dto.UsuarioBlog;
 import br.com.solides.blog.dto.UsuarioInsertRequest;
 import br.com.solides.blog.exceptions.DuplicatedRecordException;
 import br.com.solides.blog.exceptions.UserAuthenticationException;
@@ -21,6 +22,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService, AuthService, UserDetailsService {
@@ -82,6 +85,10 @@ public class UsuarioServiceImpl implements UsuarioService, AuthService, UserDeta
         return auth != null;
     }
 
+    public List<UsuarioBlog> getListaUsuarios() {
+        var list = usuarioRepositorio.findAllByOrderByNome();
+        return list.stream().map(x -> new UsuarioBlog(x.getId(), x.getNome())).collect(Collectors.toList());
+    }
 
 
 }

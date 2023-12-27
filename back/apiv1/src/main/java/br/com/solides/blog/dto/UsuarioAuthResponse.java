@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class UsuarioAuthResponse {
 
-    private String id;
+    private Long id;
     private String email;
     private String nome;
     private String token;

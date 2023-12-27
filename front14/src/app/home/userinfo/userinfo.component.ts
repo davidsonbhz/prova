@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-userinfo',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class UserinfoComponent {
 
+  constructor(private authservice: AuthService) {}
+
+  sair() {
+    this.authservice.encerrarSessao();
+  }
 }

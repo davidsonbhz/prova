@@ -1,1 +1,6 @@
-<p>home works!</p>
+<div class="homecontainer">
+    <app-topbar></app-topbar>
+    <app-userinfo></app-userinfo>
+    <app-posts [usuarioSelecionado]="usuarioatual"></app-posts>
+    <app-bloglist appDraggable (onUsuarioSelecionado)="onUsuarioSelecionado($event)"></app-bloglist>
+</div>
