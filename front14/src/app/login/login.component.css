@@ -1,0 +1,20 @@
+.logincontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  
+}
+
+.loginpanel {
+    max-width: 40%;
+}
+
+
+.registercontainer {
+    margin-top: 100px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    text-align: center;
+}
