@@ -1,10 +1,9 @@
 package br.com.solides.blog.services;
 
+import br.com.solides.blog.dto.UsuarioInsertRequest;
 
-import org.springframework.stereotype.Service;
+public interface UsuarioService {
 
-@Service
-public class UsuarioService {
-
+    Long criarUsuario(UsuarioInsertRequest dto);
 
 }
