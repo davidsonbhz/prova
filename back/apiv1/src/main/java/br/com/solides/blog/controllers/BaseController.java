@@ -29,10 +29,8 @@ public abstract class BaseController {
 
     protected String getLoggedUser() {
         var authentication = SecurityContextHolder.getContext().getAuthentication();
-        // authentication.
-        // String username = authentication.getName(); // Obtém o nome do usuário (normalmente é o ID)
-        System.out.println(authentication);
-        return "";
+        String username = authentication.getName();
+        return username;
     }
 
 

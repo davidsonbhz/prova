@@ -30,7 +30,7 @@ public class UsuarioController extends BaseController {
             @Override
             public Object get() {
 
-                return "INFO xxxx";
+                return getLoggedUser();
             }
         });
     }
