@@ -6,4 +6,5 @@ public interface UsuarioService {
 
     Long criarUsuario(UsuarioInsertRequest dto);
 
+
 }

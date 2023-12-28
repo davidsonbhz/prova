@@ -13,7 +13,6 @@ import java.util.function.Supplier;
 
 @CrossOrigin
 @RestController()
-@RequestMapping("/api/public")
 public class LoginController extends BaseController{
 
     @Autowired
@@ -22,7 +21,7 @@ public class LoginController extends BaseController{
     @Autowired
     private UsuarioService usuarioService;
 
-    @PostMapping("/login")
+    @PostMapping("/api/public/login")
     public ResponseEntity<ApiResponse<Object>> executarAutenticacao(@RequestBody UsuarioAuthRequest dto) {
 
         return createResponse(new Supplier() {
@@ -35,7 +34,7 @@ public class LoginController extends BaseController{
     }
 
 
-    @PostMapping("/register")
+    @PostMapping("/api/public/register")
     public ResponseEntity<ApiResponse<Object>> insertUsuario(@RequestBody UsuarioInsertRequest dto) {
 
         return createResponse(new Supplier() {

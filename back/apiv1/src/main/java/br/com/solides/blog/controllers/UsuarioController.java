@@ -21,18 +21,6 @@ public class UsuarioController extends BaseController {
     @Autowired
     private UsuarioServiceImpl usuarioService;
 
-    @GetMapping("/info")
-    public ResponseEntity<ApiResponse<Object>> getUsuarioInfo() {
-
-        return createResponse(new Supplier() {
-            @Override
-            public Object get() {
-
-                return getLoggedUser();
-            }
-        });
-    }
-
     @GetMapping("list")
     public ResponseEntity<ApiResponse<Object>> getListaUsuarios() {
 

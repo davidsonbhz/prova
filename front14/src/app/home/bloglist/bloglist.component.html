@@ -1,0 +1,6 @@
+<div class="draggable" id="myDiv">
+  <p>Lista de usuários</p>
+  <span class="close" onclick="fecharDiv()">×</span>
+  <div class="bloguser" *ngFor="let item of userlist"><span (click)="selecionaUsuario(item)"> {{item.nome}} </span></div>
+
+</div>

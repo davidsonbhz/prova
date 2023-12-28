@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PostagensRepository extends JpaRepository<Postagem, Long> {
 
-    public List<Postagem> findAllByOrderByDataPostagemDesc();
+    public List<Postagem> findAllByOrderByDatapostagemDesc();
 
 
 }

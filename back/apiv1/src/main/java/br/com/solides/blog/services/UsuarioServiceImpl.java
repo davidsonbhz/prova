@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UsuarioServiceImpl implements UsuarioService, AuthService, UserDetailsService {
+public class UsuarioServiceImpl extends BaseService implements UsuarioService, AuthService, UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -89,6 +89,7 @@ public class UsuarioServiceImpl implements UsuarioService, AuthService, UserDeta
         var list = usuarioRepositorio.findAllByOrderByNome();
         return list.stream().map(x -> new UsuarioBlog(x.getId(), x.getNome())).collect(Collectors.toList());
     }
+
 
 
 }

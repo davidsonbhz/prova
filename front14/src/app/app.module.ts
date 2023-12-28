@@ -1,11 +1,15 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { PanelModule } from 'primeng/panel';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { EditorModule } from 'primeng/editor';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InputTextModule } from 'primeng/inputtext';
+import { NgModule } from '@angular/core';
+import { PanelModule } from 'primeng/panel';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -34,7 +38,11 @@ import { AuthInterceptor } from './util/interceptors/authInterceptor';
     BrowserModule,
     BrowserAnimationsModule,
     ButtonModule,
+    DialogModule,
+    EditorModule,
+    FormsModule,
     HttpClientModule,
+    InputTextModule,
     PanelModule,
     ReactiveFormsModule
   ],

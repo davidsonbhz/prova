@@ -1,0 +1,35 @@
+.draggable {
+    position: absolute;
+    z-index: 9;
+    cursor: move;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    padding: 10px;
+  }
+  
+  .draggable p {
+    margin: 0;
+  }
+  
+  .close {
+    color: #000;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: red;
+  }
+  
+
+  .bloguser {
+    color: red;
+    cursor: pointer;
+  }
+
+  .bloguser:hover {
+    color: green;
+    font-size: large;
+  }
