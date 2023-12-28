@@ -18,7 +18,7 @@ public class PostagensController extends BaseController {
     @Autowired
     private PostagensService postagensService;
 
-    @GetMapping("/api/public/postagens/list")
+    @GetMapping("/api/private/postagens/list")
     public ResponseEntity<ApiResponse<Object>> getListaUsuarios() {
 
         return createResponse(new Supplier() {
@@ -36,6 +36,18 @@ public class PostagensController extends BaseController {
             @Override
             public Object get() {
                 return postagensService.insertPostagem(dto.getTitulo(), dto.getTexto());
+            }
+        });
+    }
+
+    @DeleteMapping("/api/private/postagens/{id}")
+    public ResponseEntity<ApiResponse<Object>> excluirPostagem(@PathVariable Long id) {
+
+        return createResponse(new Supplier() {
+            @Override
+            public Object get() {
+                postagensService.excluirPostagem(id);
+                return "";
             }
         });
     }

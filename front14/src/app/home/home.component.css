@@ -7,4 +7,16 @@
     margin: 0;
     padding: 0;
     height: 100vh;
+    z-index: -1;
+}
+
+.menuspeedial {
+    position: fixed;
+    top: 20;
+    right: 0;
+    left: 20;
+    z-index: 9999;
+    padding: 10px;
+    color: #fff;
+
 }

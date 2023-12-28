@@ -15,34 +15,55 @@ export class PostsComponent implements OnInit, OnChanges {
 
   public postagens: Post[] = [];
   public mostrarJanelaNovaPostagem = false;
+  public tipopostagem = 'texto';
   public texto = '';
-  public titulo = 'escreva um titulo aqui';
+  public titulo = '';
+  public isSaving = false;
+  
 
   constructor(private authService: AuthService, private service: PostsService) {}
   
 
   async ngOnInit() {
     this.usuarioSelecionado = this.authService.getCurrentUser();
-    this.postagens = await this.service.obterPostagens(this.usuarioSelecionado);
+    this.obterPostagens();
   }
 
   async ngOnChanges(changes: SimpleChanges) {
     if (changes['usuarioSelecionado']) {
-      const novoValor = changes['usuarioSelecionado'].currentValue;
-      const valorAntigo = changes['usuarioSelecionado'].previousValue;
-
-      console.log(`Valor antigo: ${valorAntigo}, Novo valor: ${novoValor}`);
-
-      this.postagens = await this.service.obterPostagens(this.usuarioSelecionado as BlogUser);
-      
+      this.obterPostagens();
     }
   }
 
   abrirJanelaNovaPostagem() {
     this.mostrarJanelaNovaPostagem = true;
+    this.tipopostagem = 'texto'
   }
 
-  salvarPostagem() {
-    
+  abrirJanelaNovoAlbum() {
+    this.mostrarJanelaNovaPostagem = true;
+    this.tipopostagem = 'album'
   }
+
+  async salvarPostagem() {
+    this.isSaving = true;
+    await this.service.salvarPostagem({texto: this.texto, titulo: this.titulo});
+    this.isSaving = false;
+    this.mostrarJanelaNovaPostagem = false;
+    this.texto = '';
+    this.titulo = '';
+  }
+
+  async obterPostagens() {
+    this.postagens = await this.service.obterPostagens(this.usuarioSelecionado as BlogUser);
+  }
+
+  isText() {
+    return this.tipopostagem == 'texto';
+  }
+
+  isAlbum() {
+    return this.tipopostagem == 'album';
+  }
+
 }

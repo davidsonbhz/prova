@@ -2,6 +2,7 @@ package br.com.solides.blog.services;
 
 import br.com.solides.blog.dto.PostagemDTO;
 import br.com.solides.blog.dto.UsuarioBlog;
+import br.com.solides.blog.exceptions.DeleteRecordException;
 import br.com.solides.blog.model.Postagem;
 import br.com.solides.blog.repositories.PostagensRepository;
 import br.com.solides.blog.repositories.UsuarioRepositorio;
@@ -24,7 +25,12 @@ public class PostagensServiceImpl extends BaseService implements PostagensServic
     @Override
     public List<PostagemDTO> getPostagens() {
         var list = repository.findAllByOrderByDatapostagemDesc();
-        return list.stream().map(x -> PostagemDTO.fromModel(x)).collect(Collectors.toList());
+        var result = list.stream().map(x -> PostagemDTO.fromModel(x)).collect(Collectors.toList());
+        var currentuser = getLoggedUser();
+        result.forEach(r -> {
+            r.setPodeExcluir(r.getAutoremail().equals(currentuser));
+        });
+        return result;
     }
 
     @Override
@@ -40,6 +46,16 @@ public class PostagensServiceImpl extends BaseService implements PostagensServic
         post = repository.save(post);
 
         return post.getId();
+    }
+
+    @Override
+    public void excluirPostagem(Long id) {
+        var post = this.repository.findById(id);
+        if(post.isPresent() && post.get().getAutor().getEmail().equals(getLoggedUser())) {
+            this.repository.deleteById(id);
+        } else {
+            throw new DeleteRecordException();
+        }
     }
 
 

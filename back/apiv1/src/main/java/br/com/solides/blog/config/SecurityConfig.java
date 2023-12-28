@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().and()
                 .authorizeRequests()
                 .antMatchers("/api/public/**").permitAll()
-                .antMatchers("/api/private/usuarios/**").authenticated()
+                .antMatchers("/api/private/**").authenticated()
                 .antMatchers("/api/admin/**").authenticated()
                 .and()
                 .userDetailsService(userDetailsService)

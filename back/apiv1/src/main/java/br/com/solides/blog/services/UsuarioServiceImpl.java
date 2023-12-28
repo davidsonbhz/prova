@@ -12,6 +12,7 @@ import br.com.solides.blog.model.Usuario;
 import br.com.solides.blog.repositories.UsuarioRepositorio;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -63,9 +64,11 @@ public class UsuarioServiceImpl extends BaseService implements UsuarioService, A
                     .nome(usuario.get().getNome())
                     .email(email)
                     .build();
+        } else {
+            throw new AuthenticationCredentialsNotFoundException("LOGIN_ERROR");
         }
 
-        return null;
+
     }
 
     @Override
