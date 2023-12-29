@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { ApiResponse, emptyResponse } from '../model/ApiResponse';
+import { ApiResponse, emptyResponse, errorResponse } from '../model/ApiResponse';
 import { BlogUser, User, UserRegisterRequest } from '../model/User';
 
 @Injectable({
@@ -17,11 +17,9 @@ export class UserService {
     try {
       const res = await this.http
         .post<ApiResponse<User>>(`${environment.apiUrl}/api/public/register`, request).toPromise();
-
-      console.log(res);  
       return res || emptyResponse;
-    } catch (error) {
-      return emptyResponse;
+    } catch (ex: any) {
+      return errorResponse(ex.error.message as string);
     }
   }
 

@@ -4,10 +4,10 @@ import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',  
+  styleUrl: './app.component.css',    
 })
 export class AppComponent {
-  title = 'front14';
+  title = 'Blog Solides';
 
   public items: MenuItem[] = [
     {tooltip: 'Fazer um novo post', icon: 'pi pi-bell'}, 

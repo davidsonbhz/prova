@@ -10,12 +10,12 @@ import { EditorModule } from 'primeng/editor';
 import { FormsModule } from '@angular/forms';
 import { FileUploadModule } from 'primeng/fileupload';
 import { GalleriaModule } from 'primeng/galleria';
-
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InputTextModule } from 'primeng/inputtext';
-import {ImageModule} from 'primeng/image';
+import { ImageModule } from 'primeng/image';
 import { NgModule } from '@angular/core';
 import { PanelModule } from 'primeng/panel';
+import { PasswordModule } from 'primeng/password';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { ToastModule } from 'primeng/toast';
@@ -37,7 +37,7 @@ import { GaleriaComponent } from './posts/postagem-album/galeria/galeria.compone
 
 @NgModule({
   declarations: [
-    AppComponent,    
+    AppComponent,
     LoginComponent,
     HomeComponent,
     TopbarComponent,
@@ -67,6 +67,7 @@ import { GaleriaComponent } from './posts/postagem-album/galeria/galeria.compone
     InputTextModule,
     ImageModule,
     PanelModule,
+    PasswordModule,
     ReactiveFormsModule,
     SpeedDialModule,
     ToastModule

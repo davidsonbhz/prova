@@ -1,8 +1,17 @@
+
 .registercontainer {
-    margin: 50px;
-    display: grid;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: blueviolet;
+
 }
+
+.registerpanel {
+  width: 80vh;
+}
+
 
 .form-container {
     display: grid;

@@ -1,21 +1,41 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="form-container">
-        <div class="form-group">
-            <label for="name">Nome:</label>
-            <input type="text" id="nome" name="nome" formControlName="nome">
-        </div>
+<p-toast position="top-center"></p-toast>
 
-        <div class="form-group">
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" formControlName="email">
-        </div>
+<div class="registercontainer">
+    <div class="registerpanel">
 
-        <div class="form-group">
-            <label for="message">Senha:</label>
-            <input type="password" id="senha" name="senha" formControlName="senha">
-        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-        <button type="submit">Enviar</button>
-        <button (click)="goBackLogin()">Voltar</button>
+            <p-panel header="Registre seus dados de acesso">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="name">Nome:</label>
+                        <input type="text" id="nome" name="nome" formControlName="nome">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" formControlName="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Senha:</label>
+                        <input type="password" id="senha" name="senha" formControlName="senha">
+                    </div>
+
+                    <div class="form-group">
+                        <button pButton type="submit">Enviar</button>
+                    </div>
+
+                    <div class="form-group">
+                        <button pButton (click)="goBackLogin()">Voltar</button>
+                    </div>
+
+
+                </div>
+            </p-panel>
+
+
+
+        </form>
     </div>
-</form>
+</div>

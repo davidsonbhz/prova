@@ -5,4 +5,8 @@ export interface ApiResponse<T> {
     message: string;
 }
 
-export const emptyResponse: ApiResponse<any> = {data: null, requestTime: 0, success: true, message: '' }
+export const emptyResponse: ApiResponse<any> = {data: null, requestTime: 0, success: false, message: '' }
+
+export function errorResponse(m: string): ApiResponse<any> {
+    return {message: m, requestTime: 0, success: false, data: null};
+}

@@ -3,7 +3,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: ;
+    background-color: blueviolet;
+
 }
 
 .loginpanel {
@@ -15,6 +16,15 @@
     margin-top: 100px;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
     text-align: center;
+}
+
+.registercontainer a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fcomponent {
+    margin-bottom: 10px;
 }

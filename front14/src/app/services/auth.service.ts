@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { BlogUser, User } from '../model/User';
 
-import { ApiResponse, emptyResponse } from '../model/ApiResponse';
+import { ApiResponse, emptyResponse, errorResponse } from '../model/ApiResponse';
 import { Constants } from '../strings';
 
 export const getCurrentToken = () => {
@@ -14,7 +14,7 @@ export const getCurrentToken = () => {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',  
 })
 export class AuthService {
 
@@ -41,20 +41,22 @@ export class AuthService {
   async login(email: string, senha: string): Promise<ApiResponse<User>> {
     try {
       const res = await this.http
-        .post<ApiResponse<User>>(`${environment.apiUrl}/api/public/login`, {
-          email,
-          senha,
-        }).toPromise();
+      .post<ApiResponse<User>>(`${environment.apiUrl}/api/public/login`, {
+        email,
+        senha,
+      }).toPromise();
 
-      if(res?.success) {
-        this.saveSessionDataToken(res.data as User);
-        this.router.navigate(['home']);
-      }  
-      
-      return res || emptyResponse;
-    } catch (error) {
-      return emptyResponse;
+    if(res?.success) {
+      this.saveSessionDataToken(res.data as User);
+      this.router.navigate(['home']);
     }
+    return res as ApiResponse<User>;
+    
+    
+    } catch(e) {
+      return errorResponse('LOGIN_ERROR');
+    }
+    
   }
 
   saveSessionDataToken(logindata: User) {

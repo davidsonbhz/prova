@@ -3,11 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
+import { MessageService } from 'primeng/api';
+import { ErrorCode, getErrorMessage } from '../util/errorTranslation';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.css',
+  providers: [MessageService]
 })
 export class RegisterComponent {
   registerForm: FormGroup;
@@ -20,7 +23,8 @@ export class RegisterComponent {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private messageService: MessageService
   ) {
     this.registerForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -35,15 +39,21 @@ export class RegisterComponent {
 
   async onSubmit() {
     if (this.registerForm.invalid) {
-      this.registerForm.reset();
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'Verifique os dados digitados'});
+      // this.registerForm.reset();
       return;
     }
 
-    console.log(this.registerForm.value);
-    const result = await this.userService.registerNewUser(this.registerForm.value);
+    const resp = await this.userService.registerNewUser(this.registerForm.value);
 
-    if(result.success) {
-      this.router.navigate(['login']);
+    if(resp.success) {
+      this.messageService.add({severity:'info', summary: 'Sucesso', detail: 'Dados cadastrados com sucesso'});
+      setTimeout(() => {
+        this.router.navigate(['login']);
+      }, 650);
+
+    } else {
+      this.messageService.add({severity:'error', summary: 'Error', detail: getErrorMessage(resp.message as ErrorCode)});
     }
 
   }
