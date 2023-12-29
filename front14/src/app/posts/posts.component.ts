@@ -47,11 +47,12 @@ export class PostsComponent implements OnInit, OnChanges {
 
   async salvarPostagem() {
     this.isSaving = true;
-    await this.service.salvarPostagem({texto: this.texto, titulo: this.titulo});
+    await this.service.salvarPostagem({texto: this.texto, titulo: this.titulo, tipo: this.tipopostagem});
     this.isSaving = false;
     this.mostrarJanelaNovaPostagem = false;
     this.texto = '';
     this.titulo = '';
+    this.obterPostagens();
   }
 
   async obterPostagens() {
@@ -66,4 +67,7 @@ export class PostsComponent implements OnInit, OnChanges {
     return this.tipopostagem == 'album';
   }
 
+  onTextChange(text: string) {
+    this.texto = text;
+  }
 }

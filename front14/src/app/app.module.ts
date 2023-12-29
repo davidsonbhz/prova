@@ -10,8 +10,10 @@ import { EditorModule } from 'primeng/editor';
 import { FormsModule } from '@angular/forms';
 import { FileUploadModule } from 'primeng/fileupload';
 import { GalleriaModule } from 'primeng/galleria';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InputTextModule } from 'primeng/inputtext';
+import {ImageModule} from 'primeng/image';
 import { NgModule } from '@angular/core';
 import { PanelModule } from 'primeng/panel';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -30,6 +32,7 @@ import { AuthInterceptor } from './util/interceptors/authInterceptor';
 import { ListPostsComponent } from './posts/list-posts/list-posts.component';
 import { PostagemTextoComponent } from './posts/postagem-texto/postagem-texto.component';
 import { PostagemAlbumComponent } from './posts/postagem-album/postagem-album.component';
+import { GaleriaComponent } from './posts/postagem-album/galeria/galeria.component';
 
 
 @NgModule({
@@ -44,7 +47,8 @@ import { PostagemAlbumComponent } from './posts/postagem-album/postagem-album.co
     BloglistComponent,
     ListPostsComponent,
     PostagemTextoComponent,
-    PostagemAlbumComponent
+    PostagemAlbumComponent,
+    GaleriaComponent
   ],
   imports: [
     AppRoutingModule,
@@ -61,6 +65,7 @@ import { PostagemAlbumComponent } from './posts/postagem-album/postagem-album.co
     GalleriaModule,
     HttpClientModule,
     InputTextModule,
+    ImageModule,
     PanelModule,
     ReactiveFormsModule,
     SpeedDialModule,

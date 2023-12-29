@@ -13,4 +13,5 @@ export interface Post {
 export interface PostInsertRequest {
     titulo: string;
     texto: string;
+    tipo: string;
 }

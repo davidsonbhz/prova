@@ -6,6 +6,7 @@
         <div [innerHTML]="item.texto"></div>
         <ng-template pTemplate="footer">
             <p-button icon="pi pi-trash" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" *ngIf="item.podeExcluir" (onClick)="onClickExcluir(item)"></p-button>
+            <p-button icon="pi pi-comment" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (onClick)="onClickComentar(item)"></p-button>
         </ng-template>
     </p-card>
 </div>

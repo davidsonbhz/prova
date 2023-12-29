@@ -25,6 +25,10 @@ export class ListPostsComponent {
     });
   }
 
+  onClickComentar(post: Post) {
+
+  }
+
   async confirmaExclusao(post: Post) {
     await this.service.excluirPostagem(post);
     this.posts = await this.service.obterPostagens();
