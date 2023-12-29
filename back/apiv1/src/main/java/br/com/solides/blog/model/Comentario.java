@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,23 +14,25 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "postagens")
-public class Postagem {
+@Table(name = "comentarios")
+public class Comentario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne()
-    @JoinColumn(name = "usuarioid")
-    private Usuario autor;
-    @Column(name = "titulo")
-    private String titulo;
+    @Column(name = "postid")
+    private Long postid;
+
+    @Column(name = "autorid")
+    private Long autorid;
+    @Column(name = "autornome")
+    private String autornome;
+
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
+    @Column(length = 128)
     private String texto;
-    @Column(name = "tipo")
-    private String tipo;
+
     @Column(name = "datapostagem")
     private Date datapostagem;
 

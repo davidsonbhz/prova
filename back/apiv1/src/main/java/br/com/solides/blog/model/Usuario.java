@@ -17,10 +17,13 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "nome")
     private String nome;
+    @Column(name = "password")
     private String password;
-    @Column(unique = true)
+    @Column(unique = true, name = "email")
     private String email;
+    @Column(name = "isadmin")
     private Boolean isAdmin = false;
 }
 

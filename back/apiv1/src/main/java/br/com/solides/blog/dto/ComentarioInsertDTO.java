@@ -3,8 +3,7 @@ package br.com.solides.blog.dto;
 import lombok.Data;
 
 @Data
-public class PostagemInsertDTO {
-    private String titulo;
+public class ComentarioInsertDTO {
+    private Long postagemId;
     private String texto;
-    private String tipo;
 }

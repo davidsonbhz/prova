@@ -1,10 +1,15 @@
 package br.com.solides.blog.services;
 
+import br.com.solides.blog.dto.ComentarioInsertDTO;
 import br.com.solides.blog.dto.UsuarioInsertRequest;
+import br.com.solides.blog.model.Comentario;
 
-public interface UsuarioService {
+import java.util.List;
 
-    Long criarUsuario(UsuarioInsertRequest dto);
+public interface ComentariosService {
 
+    Long registrarComentario(ComentarioInsertDTO dto);
+    void excluirComentario(Long comentId);
+    List<Comentario> obterComentarios(Long comentId);
 
 }

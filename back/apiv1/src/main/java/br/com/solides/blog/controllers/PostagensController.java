@@ -35,7 +35,7 @@ public class PostagensController extends BaseController {
         return createResponse(new Supplier() {
             @Override
             public Object get() {
-                return postagensService.insertPostagem(dto.getTitulo(), dto.getTexto());
+                return postagensService.insertPostagem(dto.getTitulo(), dto.getTexto(), dto.getTipo());
             }
         });
     }

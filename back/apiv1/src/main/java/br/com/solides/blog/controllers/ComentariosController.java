@@ -1,6 +1,8 @@
 package br.com.solides.blog.controllers;
 
+import br.com.solides.blog.dto.ComentarioInsertDTO;
 import br.com.solides.blog.dto.PostagemInsertDTO;
+import br.com.solides.blog.services.ComentariosService;
 import br.com.solides.blog.services.PostagensService;
 import br.com.solides.blog.shared.ApiResponse;
 import lombok.RequiredArgsConstructor;
@@ -13,40 +15,40 @@ import java.util.function.Supplier;
 @CrossOrigin
 @RestController
 @RequiredArgsConstructor
-public class PostagensController extends BaseController {
+public class ComentariosController extends BaseController {
 
     @Autowired
-    private PostagensService postagensService;
+    private ComentariosService service;
 
-    @GetMapping("/api/private/postagens/list")
-    public ResponseEntity<ApiResponse<Object>> getListaUsuarios() {
-
-        return createResponse(new Supplier() {
-            @Override
-            public Object get() {
-                return postagensService.getPostagens();
-            }
-        });
-    }
-
-    @PostMapping("/api/private/postagens")
-    public ResponseEntity<ApiResponse<Object>> inserirPostagem(@RequestBody PostagemInsertDTO dto) {
+    @GetMapping("/api/private/comentarios/list/{postId}")
+    public ResponseEntity<ApiResponse<Object>> getListaUsuarios(@PathVariable Long postId) {
 
         return createResponse(new Supplier() {
             @Override
             public Object get() {
-                return postagensService.insertPostagem(dto.getTitulo(), dto.getTexto(), dto.getTipo());
+                return service.obterComentarios(postId);
             }
         });
     }
 
-    @DeleteMapping("/api/private/postagens/{id}")
+    @PostMapping("/api/private/comentarios")
+    public ResponseEntity<ApiResponse<Object>> inserirComentario(@RequestBody ComentarioInsertDTO dto) {
+
+        return createResponse(new Supplier() {
+            @Override
+            public Object get() {
+                return service.registrarComentario(dto);
+            }
+        });
+    }
+
+    @DeleteMapping("/api/private/comentarios/{id}")
     public ResponseEntity<ApiResponse<Object>> excluirPostagem(@PathVariable Long id) {
 
         return createResponse(new Supplier() {
             @Override
             public Object get() {
-                postagensService.excluirPostagem(id);
+                service.excluirComentario(id);
                 return "";
             }
         });

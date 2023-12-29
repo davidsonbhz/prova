@@ -6,4 +6,5 @@ import lombok.Data;
 public class PostagemInsertDTO {
     private String titulo;
     private String texto;
+    private String tipo;
 }

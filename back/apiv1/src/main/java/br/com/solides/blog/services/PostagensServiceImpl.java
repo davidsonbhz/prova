@@ -34,11 +34,12 @@ public class PostagensServiceImpl extends BaseService implements PostagensServic
     }
 
     @Override
-    public Long insertPostagem(String titulo, String texto) {
+    public Long insertPostagem(String titulo, String texto, String tipo) {
         var user = usuarioRepositorio.findUsuarioByEmail(getLoggedUser()).get();
         var post = Postagem.builder()
                 .autor(user)
                 .texto(texto)
+                .tipo(tipo)
                 .titulo(titulo)
                 .datapostagem(new Date())
                 .build();
