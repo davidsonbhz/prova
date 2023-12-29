@@ -7,7 +7,7 @@ import { AlbumImage } from '../../model/Album';
   templateUrl: './postagem-album.component.html',
   styleUrl: './postagem-album.component.css'
 })
-export class PostagemAlbumComponent implements OnInit, OnChanges {
+export class PostagemAlbumComponent implements OnInit {
   
   @Input() texto = '';
   @Output() onTextChange: EventEmitter<string> = new EventEmitter<string>();
@@ -22,33 +22,29 @@ export class PostagemAlbumComponent implements OnInit, OnChanges {
     this.uploadUrl = environment.uploadUrl;
   }
 
-  async ngOnChanges(changes: SimpleChanges) {
-    if (changes['images']) {
-      
-    }
-  }
 
   onSend(event: any) {
-    this.fileUpload.files.forEach((f: any) => {
-      this.images.push({
-        itemImageSrc: this.ajustName(`${environment.uploadImages}/${f.name}`),
-        thumbnailImageSrc: this.ajustName(`${environment.uploadImages}/thumbnail_${f.name}`),
-        alt: '',
-        title: ''
-      })  
-    });
+    setTimeout(() => {
+      this.fileUpload.files.forEach((f: any) => {
+        this.images.push({
+          itemImageSrc: this.ajustName(`${environment.uploadImages}/${f.name}`),
+          thumbnailImageSrc: this.ajustName(`${environment.uploadImages}/thumbnail_${f.name}`),
+          alt: '',
+          title: ''
+        })  
+      });
+      
+      this.fileUpload.clear();
+  
+      const list = this.images.map(x => x.itemImageSrc).join(';');
+      this.onTextChange.emit(list);
+    }, 650);
     
-    this.fileUpload.clear();
-    console.log(this.images);
-
-    const list = this.images.map(x => x.itemImageSrc).join(';');
-    this.onTextChange.emit(list);
 
   }
 
   private ajustName(name: string) {
     return name;
-    // return name.replace(' ', '_');
   }
 
 }

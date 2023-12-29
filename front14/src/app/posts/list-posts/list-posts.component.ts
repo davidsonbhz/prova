@@ -57,8 +57,6 @@ export class ListPostsComponent {
   }
 
   getSubtitulo(post: Post) {
-    console.log(post);
-
     return `${post.autor} - ${formatarDataHora(post.datapostagem)} `;
   }
 

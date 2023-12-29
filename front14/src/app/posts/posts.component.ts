@@ -3,11 +3,13 @@ import { BlogUser, User } from '../model/User';
 import { AuthService } from '../services/auth.service';
 import { PostsService } from '../services/posts.service';
 import { Post } from '../model/Post';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrl: './posts.component.css'
+  styleUrl: './posts.component.css',
+  providers: [MessageService]
 })
 export class PostsComponent implements OnInit, OnChanges {
   
@@ -21,7 +23,7 @@ export class PostsComponent implements OnInit, OnChanges {
   public isSaving = false;
   
 
-  constructor(private authService: AuthService, private service: PostsService) {}
+  constructor(private authService: AuthService, private service: PostsService, private messageService: MessageService) {}
   
 
   async ngOnInit() {
@@ -46,7 +48,11 @@ export class PostsComponent implements OnInit, OnChanges {
   }
 
   async salvarPostagem() {
-    this.isSaving = true;
+    if(this.texto.length < 10 || this.titulo.length == 0) {
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'É necessário conteúdo e título'});
+      return;
+    }
+    this.isSaving = true;    
     await this.service.salvarPostagem({texto: this.texto, titulo: this.titulo, tipo: this.tipopostagem});
     this.isSaving = false;
     this.mostrarJanelaNovaPostagem = false;

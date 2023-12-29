@@ -1,3 +1,5 @@
+<p-toast position="top-center"></p-toast>
+
 <div class="menuopcoes">
     <span class="opcaomenu">
         <p-button icon="pi pi-plus" (onClick)="abrirJanelaNovaPostagem()" pTooltip="Incluir nova postagem"></p-button>
@@ -19,10 +21,6 @@
         </div>
     </ng-template>
 
-    {{tipopostagem}} {{isText()}}
-
-    <div *ngIf="isText()">Texto</div>
-    <div *ngIf="isAlbum()">Album</div>
     <app-postagem-texto [texto]="texto" *ngIf="isText()" (onTextChange)="onTextChange($event)"></app-postagem-texto>
     <app-postagem-album [texto]="texto" *ngIf="isAlbum()" (onTextChange)="onTextChange($event)"></app-postagem-album>
 

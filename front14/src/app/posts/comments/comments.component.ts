@@ -39,6 +39,9 @@ export class CommentsComponent implements OnInit {
 
   async kp(event: any) {
     if (event.keyCode == 13) {
+      if(this.comentario=='') {
+        return;
+      }
       await this.service.salvarComentario((this.currentPost as Post).id, this.comentario);
       this.comentario = '';
       await this.carregarComentarios();
