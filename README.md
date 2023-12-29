@@ -8,6 +8,8 @@ Para executar o front:
     - nvm use 18.13
     - ng serve
 
+    Foi utilizado a biblioteca PrimeNG (https://primeng.org/) no projeto.
+
     Obs: A url de salvamento das imagens é um servidor temporário feito para este projeto: https://backupmyfiles.duckdns.org/davidson/upload.php. 
     
 
