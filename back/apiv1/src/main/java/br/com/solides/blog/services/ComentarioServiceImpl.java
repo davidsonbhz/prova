@@ -2,10 +2,7 @@ package br.com.solides.blog.services;
 
 
 import br.com.solides.blog.config.JwtUtil;
-import br.com.solides.blog.dto.ComentarioInsertDTO;
-import br.com.solides.blog.dto.UsuarioAuthResponse;
-import br.com.solides.blog.dto.UsuarioBlog;
-import br.com.solides.blog.dto.UsuarioInsertRequest;
+import br.com.solides.blog.dto.*;
 import br.com.solides.blog.exceptions.DuplicatedRecordException;
 import br.com.solides.blog.model.Comentario;
 import br.com.solides.blog.model.Postagem;
@@ -41,7 +38,9 @@ public class ComentarioServiceImpl extends BaseService implements ComentariosSer
         var user = usuarioRepositorio.findUsuarioByEmail(getLoggedUser()).get();
         var comentario = Comentario.builder()
                 .autorid(user.getId())
+                .postid(dto.getPostagemId())
                 .autornome(user.getNome())
+                .autoremail(user.getEmail())
                 .texto(dto.getTexto())
                 .datapostagem(new Date())
                 .build();
@@ -52,11 +51,18 @@ public class ComentarioServiceImpl extends BaseService implements ComentariosSer
 
     @Override
     public void excluirComentario(Long comentId) {
-
+        this.repository.deleteById(comentId);
     }
 
     @Override
-    public List<Comentario> obterComentarios(Long comentId) {
-        return null;
+    public List<ComentarioDTO> obterComentarios(Long comentId) {
+        var list = repository.findAllByPostidOrderByDatapostagemDesc(comentId);
+        var result = list.stream().map(x -> ComentarioDTO.fromModel(x)).collect(Collectors.toList());
+        var currentuser = getLoggedUser();
+        result.forEach(r -> {
+            r.setPodeExcluir(r.getAutoremail().equals(currentuser));
+        });
+        return result;
+
     }
 }

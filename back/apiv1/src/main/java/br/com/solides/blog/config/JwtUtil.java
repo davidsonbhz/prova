@@ -32,7 +32,7 @@ public class JwtUtil {
                 .withClaim(CLAIM_USERNAME, usuario.getEmail())
                 .withClaim(CLAIM_ROLES, usuario.getIsAdmin() ? List.of("USER", "ADMIN") : List.of("USER"))
                 .withIssuedAt(new Date())
-                .withExpiresAt(new Date(System.currentTimeMillis() + 3600000L))
+                .withExpiresAt(new Date(System.currentTimeMillis() + 86400000L))
                 .withJWTId(UUID.randomUUID().toString())
                 // .withNotBefore(new Date(System.currentTimeMillis() + 3600000L))
                 .sign(Algorithm.HMAC256(SECRET));

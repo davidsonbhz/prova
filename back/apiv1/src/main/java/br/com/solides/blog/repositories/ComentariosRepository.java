@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ComentariosRepository extends JpaRepository<Comentario, Long> {
 
+    public List<Comentario> findAllByPostidOrderByDatapostagemDesc(Long postId);
 }

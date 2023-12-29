@@ -53,7 +53,7 @@ public class UsuarioServiceImpl extends BaseService implements UsuarioService, A
     public UsuarioAuthResponse authenticateUser(String email, String password) {
         var usuario = usuarioRepositorio.findUsuarioByEmail(email);
         if(usuario.isEmpty()) {
-            return null;
+            throw new AuthenticationCredentialsNotFoundException("LOGIN_ERROR");
         }
 
         var encryptpass = usuario.get().getPassword();

@@ -28,8 +28,9 @@ public class Comentario {
     private Long autorid;
     @Column(name = "autornome")
     private String autornome;
+    @Column(name = "autoremail")
+    private String autoremail;
 
-    @Lob
     @Column(length = 128)
     private String texto;
 

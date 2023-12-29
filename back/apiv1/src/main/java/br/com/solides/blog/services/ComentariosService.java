@@ -1,5 +1,6 @@
 package br.com.solides.blog.services;
 
+import br.com.solides.blog.dto.ComentarioDTO;
 import br.com.solides.blog.dto.ComentarioInsertDTO;
 import br.com.solides.blog.dto.UsuarioInsertRequest;
 import br.com.solides.blog.model.Comentario;
@@ -10,6 +11,6 @@ public interface ComentariosService {
 
     Long registrarComentario(ComentarioInsertDTO dto);
     void excluirComentario(Long comentId);
-    List<Comentario> obterComentarios(Long comentId);
+    List<ComentarioDTO> obterComentarios(Long comentId);
 
 }

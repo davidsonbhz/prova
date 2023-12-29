@@ -16,6 +16,7 @@ public class PostagemDTO {
     private String autoremail;
     private String titulo;
     private String texto;
+    private String tipo;
     private Date datapostagem;
     private Boolean podeExcluir;
 
