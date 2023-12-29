@@ -8,6 +8,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DataViewModule } from 'primeng/dataview';
 import { EditorModule } from 'primeng/editor';
 import { FormsModule } from '@angular/forms';
+import { FileUploadModule } from 'primeng/fileupload';
 import { GalleriaModule } from 'primeng/galleria';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InputTextModule } from 'primeng/inputtext';
@@ -55,6 +56,7 @@ import { PostagemAlbumComponent } from './posts/postagem-album/postagem-album.co
     DataViewModule,
     DialogModule,
     EditorModule,
+    FileUploadModule,
     FormsModule,
     GalleriaModule,
     HttpClientModule,

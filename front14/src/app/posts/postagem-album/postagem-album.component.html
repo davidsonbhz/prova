@@ -1,5 +1,5 @@
 <div>
-    <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '640px' }"
+    <p-galleria [value]="images" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '640px', width: '90vw', heigth: '70vw' }"
         [numVisible]="5">
         <ng-template pTemplate="item" let-item>
             <img [src]="item.itemImageSrc" style="width: 100%;" />
@@ -10,4 +10,8 @@
             </div>
         </ng-template>
     </p-galleria>
+
+    <p-fileUpload mode="basic" chooseLabel="Choose" name="arquivo[]" url="https://albeom.websiteseguro.com/davidson/upload.php" accept="image/*" [maxFileSize]="1000000" (onUpload)="onUpload($event)"></p-fileUpload>
+    
+    
 </div>

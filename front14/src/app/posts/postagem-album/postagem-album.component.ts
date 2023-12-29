@@ -10,5 +10,8 @@ export class PostagemAlbumComponent {
   images: any[] = [];
   responsiveOptions: any[] | undefined;
 
+  onUpload(event: any) {
+    console.log(event);
+  }
 
 }
