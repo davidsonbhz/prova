@@ -1,0 +1,11 @@
+.menuopcoes {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.opcaomenu {
+    padding-right: 10px;
+}

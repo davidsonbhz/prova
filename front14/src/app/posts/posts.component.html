@@ -1,6 +1,13 @@
-{{usuarioSelecionado?.nome}}
-<p-button icon="pi pi-plus" (onClick)="abrirJanelaNovaPostagem()"></p-button>
-<p-button icon="pi pi-star" (onClick)="abrirJanelaNovoAlbum()"></p-button>
+<div class="menuopcoes">
+    <span class="opcaomenu">
+        <p-button icon="pi pi-plus" (onClick)="abrirJanelaNovaPostagem()" pTooltip="Incluir nova postagem"></p-button>
+    </span>
+    <span class="opcaomenu">
+        <p-button icon="pi pi-star" (onClick)="abrirJanelaNovoAlbum()" pTooltip="Incluir novo album"></p-button>
+    </span>
+    
+</div>
+
 
 <app-list-posts [posts]="postagens"></app-list-posts>
 

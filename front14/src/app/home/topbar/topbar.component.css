@@ -1,4 +1,9 @@
 .topbar {
     font-weight: bolder;
     font-size: xx-large;
+    background-color: rgb(179 87 255);
+    height: 80px;
+    text-align: center;
+    vertical-align: middle;
+    
 }

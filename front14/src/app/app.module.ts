@@ -6,6 +6,7 @@ import { CardModule } from 'primeng/card';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { DataViewModule } from 'primeng/dataview';
+import { DockModule } from 'primeng/dock';
 import { EditorModule } from 'primeng/editor';
 import { FormsModule } from '@angular/forms';
 import { FileUploadModule } from 'primeng/fileupload';
@@ -61,6 +62,7 @@ import { CommentsComponent } from './posts/comments/comments.component';
     ConfirmDialogModule,
     DataViewModule,
     DialogModule,
+    DockModule,
     EditorModule,
     FileUploadModule,
     FormsModule,
