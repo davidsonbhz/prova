@@ -7,6 +7,7 @@ export interface Post {
     autor: string;
     dataPostagem: Date;
     texto: string;
+    tipo: string;
     podeExcluir: boolean;    
 } 
 

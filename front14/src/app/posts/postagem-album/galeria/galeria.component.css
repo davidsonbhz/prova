@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Ou use "space-around" para espaçamento uniforme */
+
+}
+
+.container img {
+    width: 23%; /* Ou ajuste conforme necessário para deixar espaço para 4 imagens por linha */
+    margin-bottom: 10px; /* Ajuste conforme necessário para espaçamento vertical */
+  }

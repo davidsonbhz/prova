@@ -3,7 +3,8 @@
     <p-card header="{{item.titulo}}" subheader="{{item.autor}}" [style]="{ width: '90vh' }">
         <ng-template pTemplate="header">
         </ng-template>
-        <div [innerHTML]="item.texto"></div>
+        <div [innerHTML]="item.texto" *ngIf="item.tipo=='texto'"></div>
+        <app-galeria *ngIf="item.tipo=='album'" [imagens]="transformTextImages(item)"></app-galeria>
         <ng-template pTemplate="footer">
             <p-button icon="pi pi-trash" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" *ngIf="item.podeExcluir" (onClick)="onClickExcluir(item)"></p-button>
             <p-button icon="pi pi-comment" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (onClick)="onClickComentar(item)"></p-button>
