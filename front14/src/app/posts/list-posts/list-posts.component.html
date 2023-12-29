@@ -12,10 +12,9 @@
     </p-card>
 </div>
 
-
+<app-comments *ngIf="currentPost !== null" [currentPost]="currentPost" (onFechar)="onFecharComentario()" />
 
 <p-toast></p-toast>
-<p-confirmDialog>
-</p-confirmDialog>
+<p-confirmDialog />
 
 

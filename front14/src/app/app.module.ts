@@ -33,6 +33,7 @@ import { ListPostsComponent } from './posts/list-posts/list-posts.component';
 import { PostagemTextoComponent } from './posts/postagem-texto/postagem-texto.component';
 import { PostagemAlbumComponent } from './posts/postagem-album/postagem-album.component';
 import { GaleriaComponent } from './posts/postagem-album/galeria/galeria.component';
+import { CommentsComponent } from './posts/comments/comments.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { GaleriaComponent } from './posts/postagem-album/galeria/galeria.compone
     ListPostsComponent,
     PostagemTextoComponent,
     PostagemAlbumComponent,
-    GaleriaComponent
+    GaleriaComponent,
+    CommentsComponent
   ],
   imports: [
     AppRoutingModule,

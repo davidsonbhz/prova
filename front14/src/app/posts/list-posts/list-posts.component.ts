@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { PostsService } from '../../services/posts.service';
 import { Post } from '../../model/Post';
 import { ConfirmDialog } from 'primeng/confirmdialog';
@@ -14,9 +14,11 @@ import { AlbumImage } from '../../model/Album';
 export class ListPostsComponent {
 
   @Input() public posts: Post[] = [];
+  currentPost: Post | null = null;
 
   constructor(private service: PostsService,
     private confirmationService: ConfirmationService) {}
+  
 
   onClickExcluir(post: Post) {
     this.confirmationService.confirm({
@@ -27,8 +29,13 @@ export class ListPostsComponent {
   }
 
   onClickComentar(post: Post) {
-
+    this.currentPost = post;
   }
+
+  onFecharComentario() {
+    this.currentPost = null;
+  }
+ 
 
   async confirmaExclusao(post: Post) {
     await this.service.excluirPostagem(post);
@@ -45,7 +52,6 @@ export class ListPostsComponent {
       };
     });
 
-    console.log(ls);
     return ls;
   }
 
