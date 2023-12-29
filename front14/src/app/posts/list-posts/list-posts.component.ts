@@ -4,6 +4,7 @@ import { Post } from '../../model/Post';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService, PrimeNGConfig } from 'primeng/api';
 import { AlbumImage } from '../../model/Album';
+import { formatarDataHora } from '../../util/utils';
 
 @Component({
   selector: 'app-list-posts',
@@ -54,5 +55,12 @@ export class ListPostsComponent {
 
     return ls;
   }
+
+  getSubtitulo(post: Post) {
+    console.log(post);
+
+    return `${post.autor} - ${formatarDataHora(post.datapostagem)} `;
+  }
+
 
 }

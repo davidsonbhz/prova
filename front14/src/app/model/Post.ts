@@ -5,7 +5,7 @@ export interface Post {
     id: number;
     titulo: string;
     autor: string;
-    dataPostagem: Date;
+    datapostagem: string;
     texto: string;
     tipo: string;
     podeExcluir: boolean;    

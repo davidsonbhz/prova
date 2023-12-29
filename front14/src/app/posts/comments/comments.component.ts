@@ -3,6 +3,7 @@ import { Post } from '../../model/Post';
 import { CommentsService } from '../../services/comments.service';
 import { Comentario } from '../../model/Comentario';
 import { ConfirmationService, MessageService, ConfirmEventType } from 'primeng/api';
+import { formatarDataHora } from '../../util/utils';
 
 @Component({
   selector: 'app-comments',
@@ -63,4 +64,7 @@ export class CommentsComponent implements OnInit {
     });
   }
 
+  formatar(dt: string) {
+    return formatarDataHora(dt);
+  }
 }

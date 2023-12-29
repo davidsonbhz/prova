@@ -5,5 +5,5 @@ export interface Comentario {
     autoremail: string;
     texto: string;
     podeExcluir: boolean;
-    datapostagem: Date
+    datapostagem: string;
 }

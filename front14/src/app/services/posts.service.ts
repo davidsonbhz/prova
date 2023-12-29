@@ -29,7 +29,6 @@ export class PostsService {
 
 
   async salvarPostagem(record: PostInsertRequest) {
-    console.log(record);
     await this.http.post(`${environment.apiUrl}/api/private/postagens`, record).toPromise();
   }
 

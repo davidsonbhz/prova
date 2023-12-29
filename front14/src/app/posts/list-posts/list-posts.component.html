@@ -1,6 +1,6 @@
 
 <div class="postagem"  *ngFor="let item of posts">
-    <p-card header="{{item.titulo}}" subheader="{{item.autor}}" [style]="{ width: '90vh' }">
+    <p-card header="{{item.titulo}}" subheader="{{getSubtitulo(item)}}" [style]="{ width: '90vh' }">
         <ng-template pTemplate="header">
         </ng-template>
         <div [innerHTML]="item.texto" *ngIf="item.tipo=='texto'"></div>

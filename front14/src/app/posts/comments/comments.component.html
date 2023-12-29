@@ -2,7 +2,7 @@
 <p-dialog header="Comentários" [style]="{width: '90vw'}" [modal]="true" [(visible)]="visible" (onHide)="fecharDialog()" >
 
     <div *ngFor="let item of comentarios">
-        <span style="font-weight: bolder;">{{item.autornome}}</span>:: 
+        <span style="font-weight: bolder;">{{item.autornome}} em {{formatar(item.datapostagem)}} </span>: 
         <div style="margin-left: 10px;">{{item.texto}} <span *ngIf="item.podeExcluir"><i class="pi pi-trash" (click)="confirmaExclusaoComentario(item)"></i></span> </div>
     </div>
 
